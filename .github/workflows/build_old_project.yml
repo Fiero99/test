@@ -1,0 +1,16 @@
+name: Build old project
+on:
+  workflow_dispatch:
+
+jobs:
+  host:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:18.04
+    steps:
+      - name: Build
+        run: echo "Building stuff with petalinux:2019.1" > result.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: legacy_build
+          path: result.txt
